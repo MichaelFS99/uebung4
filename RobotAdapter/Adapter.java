@@ -1,40 +1,45 @@
 
-public class Adapter extends Robot implements Spieler{
+public class Adapter implements Spieler{
 
+	Robot Robb; 
+	
+	Adapter(Robot r){
+		this.Robb = r;
+	}
 	@Override
 	public int geheNachLinks(int a) {
 		
-		double x = this.getX();
-		double y = this.getY();
-		this.rolleNach(x - a, y);
-		return 0;
+		double x = Robb.getX() - a;
+		double y = Robb.getY();
+	    Robb.rolleNach(x - a, y);
+		return (int) x;
 	}
 
 	@Override
 	public int geheNachRechts(int a) {
 		
-		double x = this.getX(); 
-		double y = this.getY(); 
-		this.rolleNach(x + a, y);
-		return 0;
+		double x = Robb.getX() + a; 
+		double y = Robb.getY(); 
+	    Robb.rolleNach(x, y);
+		return (int) x;
 	}
 
 	@Override
 	public int geheNachOben(int a) {
 		
-		double x = this.getX();
-		double y = this.getY(); 
-		this.rolleNach(x, y + a);
-		return 0;
+		double x = Robb.getX();
+		double y = Robb.getY() + a; 
+		Robb.rolleNach(x, y + a);
+		return (int)y;
 	}
 
 	@Override
 	public int geheNachUnten(int a) {
 		
-		double x = this.getX();
-		double y = this.getY();
-		this.rolleNach(x, y - a);
-		return 0;
+		double x = Robb.getX();
+		double y = Robb.getY() - a;
+		Robb.rolleNach(x,y);
+		return (int) y;
 	}
 	
 }
